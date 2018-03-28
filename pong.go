@@ -27,7 +27,7 @@ const (
 var state = start
 
 // default color r, g, b
-var white = color{0, 255, 0}
+var gameColor = color{0, 255, 0}
 
 // Current score can only go to 10 for the moment.
 var nums = [][]byte{
@@ -81,7 +81,7 @@ func drawBackground(pixels []byte) {
 			on = !on
 		}
 		if on {
-			setPixel(x, y, white, pixels)
+			setPixel(x, y, gameColor, pixels)
 		}
 	}
 	// Maybe create a different background and include goals?
@@ -282,11 +282,11 @@ func main() {
 	pixels := make([]byte, winWidth*winHeight*4)
 
 	// Creates the player paddles, sets position, Width & Height, Speed, and color
-	player1 := paddle{pos: pos{50, float32(winHeight / 2)}, w: 20, h: 100, speed: 500, color: white} // Maybe I will play with player acceleration later
-	player2 := paddle{pos: pos{float32(winWidth - 50), float32(winHeight / 2)}, speed: 300, acceleration: 1, w: 20, h: 100, color: white}
+	player1 := paddle{pos: pos{50, float32(winHeight / 2)}, w: 20, h: 100, speed: 500, color: gameColor} // Maybe I will play with player acceleration later
+	player2 := paddle{pos: pos{float32(winWidth - 50), float32(winHeight / 2)}, speed: 300, acceleration: 1, w: 20, h: 100, color: gameColor}
 
 	// creates a ball in the center of the screen, with a radius, velocity in the x & y direction, and color
-	Ball := ball{getCenter(), 15, 300, 300, 1, white}
+	Ball := ball{getCenter(), 15, 300, 300, 1, gameColor}
 
 	// Gets the state of the keys pressed on a keyboard
 	keyState := sdl.GetKeyboardState()
