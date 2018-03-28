@@ -193,7 +193,7 @@ func (paddle *paddle) draw(pixels []byte) {
 		}
 	}
 	//
-	numX := lerp(paddle.x, getCenter().x, 0.2)
+	numX := lerp(paddle.x, getCenter().x, 0.4)
 	drawNumber(pos{numX, 35}, paddle.color, 10, paddle.score, pixels)
 }
 
